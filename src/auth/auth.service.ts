@@ -20,7 +20,7 @@ export class AuthService {
   private issuer = 'login';
   private audience = 'users';
 
-  async createToken({ id, name, email }: User) {
+  createToken({ id, name, email }: User) {
     return {
       accessToken: this.jwtService.sign(
         { id, name, email },
@@ -34,7 +34,7 @@ export class AuthService {
     };
   }
 
-  async checkToken(token: string) {
+  checkToken(token: string) {
     try {
       return this.jwtService.verify(token, {
         issuer: this.issuer,
